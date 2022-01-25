@@ -1,0 +1,9 @@
+.pokeSearchForm {
+  width: 400px;
+}
+
+ul,
+li {
+  list-style: none;
+  text-align: justify;
+}
