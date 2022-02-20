@@ -9,6 +9,7 @@ import PokeList from './components/PokeList';
 function App() {
   const [pokeInput, setPokeInput] = useState("")
   const [submittedPokemon, setSubmittedPokemon] = useState({})
+  console.log("App ~ submittedPokemon", submittedPokemon)
   const [isSubmittedPokeEmpty, setIsSubmittedPokeEmpty] = useState(true)
   const [pokeList, setPokeList] = useState([])
   const [offset, setOffset] = useState(0)
@@ -24,13 +25,8 @@ function App() {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeInput}`)
       setSubmittedPokemon(response.data)
       setIsSubmittedPokeEmpty(false)
-      setPokeList([])
-      console.log(response.data)
     } else {
-      const responseNoInput = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
-      setIsSubmittedPokeEmpty(true)
-      setPokeList(responseNoInput.data.results)
-      // alert("ingrese un valor")
+      alert("ingrese un valor")
     }
   }
 
@@ -49,9 +45,12 @@ function App() {
   return (
     <div className="App">
       <PokeSearch handleChange={handleChange} handleSubmit={handleSubmit} />
-      {isSubmittedPokeEmpty === false && <PokeCard pokemon={submittedPokemon} isSubmittedPokeEmpty={isSubmittedPokeEmpty} />}
-      {isSubmittedPokeEmpty === true && <PokeList pokemonList={pokeList} offset={offset} setOffset={setOffset} />}
-    </div>
+      <div className={isSubmittedPokeEmpty === true ? 'container-wrapper-true' : 'container-wrapper-false'}>
+        <div> {isSubmittedPokeEmpty === false && <PokeList pokemonList={pokeList} offset={offset} setOffset={setOffset} />} </div>
+        <div>{isSubmittedPokeEmpty === true && <PokeList pokemonList={pokeList} offset={offset} setOffset={setOffset} />}</div>
+        <div>{isSubmittedPokeEmpty === false && <PokeCard pokemon={submittedPokemon} isSubmittedPokeEmpty={isSubmittedPokeEmpty} />}</div>
+      </div>
+    </div >
   );
 }
 

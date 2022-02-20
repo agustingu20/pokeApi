@@ -14,16 +14,16 @@ export default function PokeList({ pokemonList, setOffset, offset }) {
     }
 
     return (
-        <div>
+        <div className='pokemon-list'>
             <div> {pokemonList.map((pokemon) => (
                 <ul key={`pokemon-${pokemon.name}`}>
-                    <li>{pokemon.name}</li>
+                    <li>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</li>
                 </ul>
             ))}
             </div>
-            <div>
-                <Button className='mx-4' onClick={previousPage}>Anterior</Button>
-                <Button onClick={nextPage}>Siguiente</Button>
+            <div className='mt-3 mb-3'>
+                <Button className='mx-4 btn-sm' onClick={previousPage}>Anterior</Button>
+                <Button className='btn-sm' onClick={nextPage}>Siguiente</Button>
             </div>
         </div>
     )

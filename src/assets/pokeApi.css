@@ -2,8 +2,59 @@
   width: 400px;
 }
 
-ul,
-li {
-  list-style: none;
+.container-wrapper-false {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.container-wrapper-true {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-left: 133px;
+}
+
+ul {
+  padding-left: 2rem;
+  list-style-type: none;
+}
+
+.pokemon-list li {
+  padding-left: 3rem;
+  background-image: url(./pokebola.png);
+  background-size: 1.6rem 1.6rem;
+  background-repeat: no-repeat;
   text-align: justify;
+}
+
+.pokemon-list {
+  width: 400px;
+}
+
+.poke-card {
+  width: 40rem;
+  display: flex;
+  flex-direction: row;
+  border: 2rem solid gray;
+  border-radius: 20px;
+}
+
+.pokedex-container {
+  display: flex;
+  flex-direction: column;
+  border: red 2rem solid;
+  border-top: red 2rem solid;
+  border-radius: 20px;
+  background-color: red;
+}
+
+.pokedex-circle {
+  width: 200px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.pokedex-circle-border-white {
+  border: 2px white solid;
 }
