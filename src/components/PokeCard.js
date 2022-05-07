@@ -18,7 +18,7 @@ export default function PokeCard({ pokemon, isSubmittedPokeEmpty }) {
                 </svg>
                 <Card className='poke-card'>
                     <Card.Img variant="top" style={{ width: "18rem" }}
-                        src={isSubmittedPokeEmpty === false && `${pokemon.sprites["front_default"]}`}
+                        src={isSubmittedPokeEmpty === false && `${pokemon.sprites.other["official-artwork"]["front_default"]}`}
                     />
                     <Card.Body className='mt-auto mb-auto poke-body'>
                         <Card.Title>
