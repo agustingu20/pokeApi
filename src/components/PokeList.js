@@ -4,7 +4,7 @@ import PokemonThumbnail from './PokemonThumbnail';
 
 export default function PokeList({ setOffset, offset, pokemonObject }) {
 
-    const nextPage = () => {
+    const showMore = () => {
         setOffset(offset + 30)
     }
 
@@ -24,7 +24,7 @@ export default function PokeList({ setOffset, offset, pokemonObject }) {
                 }
             </div>
             <div className='mt-3 mb-3'>
-                <Button className='btn-sm' onClick={nextPage}>Mostrar más</Button>
+                <Button className='btn-sm' onClick={showMore}>Mostrar más</Button>
             </div>
         </div>
     )
