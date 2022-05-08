@@ -10,8 +10,8 @@
 
 .container-wrapper-true {
   display: flex;
+  /* justify-content: start; */
   flex-direction: row;
-  justify-content: start;
   margin-left: 133px;
 }
 
@@ -20,12 +20,13 @@ ul {
   list-style-type: none;
 }
 
-.pokemon-list li {
-  padding-left: 3rem;
-  background-image: url(./pokebola.png);
-  background-size: 1.6rem 1.6rem;
-  background-repeat: no-repeat;
-  text-align: justify;
+.pokemon-display {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .pokemon-list {
@@ -57,4 +58,46 @@ ul {
 
 .pokedex-circle-border-white {
   border: 2px white solid;
+}
+
+/* Fondos segun clases */
+
+.Rock {
+  background-color: rgb(148, 81, 81);
+}
+.Ground {
+  background-color: rgba(148, 81, 81, 0.712);
+}
+.Ghost {
+  background-color: rgba(255, 36, 255, 0.664);
+}
+.Electric {
+  background-color: rgb(255, 255, 161);
+}
+.Bug {
+  background-color: #f6d6a7;
+}
+.Poison {
+  background-color: #e0a7f6;
+}
+.Psychic {
+  background-color: #e0a7f66b;
+}
+.Normal {
+  background-color: #f4f4f4;
+}
+.Fairy {
+  background-color: rgba(255, 192, 203, 0.863);
+}
+.Fire {
+  background-color: #ff260080;
+}
+.Fighting {
+  background-color: #fbe3df;
+}
+.Grass {
+  background-color: #e2f9e1;
+}
+.Water {
+  background-color: #e0f1fd;
 }

@@ -9,10 +9,11 @@ import PokeList from './components/PokeList';
 function App() {
   const [pokeInput, setPokeInput] = useState("")
   const [submittedPokemon, setSubmittedPokemon] = useState({})
-  console.log("App ~ submittedPokemon", submittedPokemon)
   const [isSubmittedPokeEmpty, setIsSubmittedPokeEmpty] = useState(true)
   const [pokeList, setPokeList] = useState([])
   const [offset, setOffset] = useState(0)
+
+  const [pokemonObject, setPokemonObject] = useState([])
 
   const handleChange = (e) => {
     const { value } = e.target
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     const nextPage = async () => {
       if (!pokeInput) {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`)
         setIsSubmittedPokeEmpty(true)
         setPokeList(response.data.results)
       }
@@ -41,14 +42,23 @@ function App() {
     nextPage()
   }, [offset, pokeInput])
 
+  useEffect(() => {
+    if (pokeList.length !== 0) {
+      pokeList.forEach(async (pokemon) => {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
+        setPokemonObject(currentList => [...currentList, response.data].sort(function (a, b) { return a.id - b.id }))
+      })
+    }
+  }, [pokeList])
+
 
   return (
     <div className="App">
       <PokeSearch handleChange={handleChange} handleSubmit={handleSubmit} />
+      <PokeList pokemonObject={pokemonObject} offset={offset} setOffset={setOffset} />
       <div className={isSubmittedPokeEmpty === true ? 'container-wrapper-true' : 'container-wrapper-false'}>
-        <div> {isSubmittedPokeEmpty === false && <PokeList pokemonList={pokeList} offset={offset} setOffset={setOffset} />} </div>
-        <div>{isSubmittedPokeEmpty === true && <PokeList pokemonList={pokeList} offset={offset} setOffset={setOffset} />}</div>
-        <div>{isSubmittedPokeEmpty === false && <PokeCard pokemon={submittedPokemon} isSubmittedPokeEmpty={isSubmittedPokeEmpty} />}</div>
+        {/* <div> {isSubmittedPokeEmpty === false && <PokeList pokemonObject={pokemonObject} offset={offset} setOffset={setOffset} />} </div> */}
+        {/* <div>{isSubmittedPokeEmpty === false && <PokeCard pokemon={submittedPokemon} isSubmittedPokeEmpty={isSubmittedPokeEmpty} />}</div> */}
       </div>
     </div >
   );
