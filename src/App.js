@@ -1,10 +1,10 @@
 import './App.css';
 import PokeSearch from './components/PokeSearch';
 import "./assets/pokeApi.css"
-import PokeCard from './components/PokeCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PokeList from './components/PokeList';
+import PokeFeatures from './components/PokeFeatures';
 
 function App() {
   const [pokeInput, setPokeInput] = useState("")
@@ -14,6 +14,11 @@ function App() {
   const [offset, setOffset] = useState(0)
 
   const [pokemonObject, setPokemonObject] = useState([])
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleChange = (e) => {
     const { value } = e.target
@@ -54,12 +59,9 @@ function App() {
 
   return (
     <div className="App">
-      <PokeSearch handleChange={handleChange} handleSubmit={handleSubmit} />
+      <PokeSearch handleChange={handleChange} handleSubmit={handleSubmit} handleShow={handleShow} />
       <PokeList pokemonObject={pokemonObject} offset={offset} setOffset={setOffset} />
-      <div className={isSubmittedPokeEmpty === true ? 'container-wrapper-true' : 'container-wrapper-false'}>
-        {/* <div> {isSubmittedPokeEmpty === false && <PokeList pokemonObject={pokemonObject} offset={offset} setOffset={setOffset} />} </div> */}
-        {/* <div>{isSubmittedPokeEmpty === false && <PokeCard pokemon={submittedPokemon} isSubmittedPokeEmpty={isSubmittedPokeEmpty} />}</div> */}
-      </div>
+      {isSubmittedPokeEmpty === false && <PokeFeatures pokemon={submittedPokemon} isSubmittedPokeEmpty={isSubmittedPokeEmpty} handleClose={handleClose} show={show} />}
     </div >
   );
 }

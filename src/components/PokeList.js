@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import PokemonThumbnail from './PokemonThumbnail';
 
 export default function PokeList({ setOffset, offset, pokemonObject }) {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function PokeSearch({ handleSubmit, handleChange }) {
+export default function PokeSearch({ handleSubmit, handleChange, handleShow }) {
 
 
     return (
@@ -12,7 +12,7 @@ export default function PokeSearch({ handleSubmit, handleChange }) {
                     <Form.Label>Ingrese el pokémon</Form.Label>
                     <Form.Control type="text" onChange={handleChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit" >
+                <Button variant="primary" type="submit" onClick={handleShow}>
                     Submit
                 </Button>
             </Form>
