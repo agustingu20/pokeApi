@@ -37,6 +37,22 @@
   border-color: transparent;
 }
 
+.pokeball-image {
+  margin-top: 1.5rem;
+  width: 80%;
+  opacity: 90%;
+}
+
+.poke-image {
+  position: relative;
+  width: 70%;
+  top: -210px;
+}
+
+.img-wrapper {
+  height: 250px;
+}
+
 /* Fondos segun clases */
 
 .Rock {

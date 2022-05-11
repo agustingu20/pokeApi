@@ -7,19 +7,23 @@ import PokeList from './components/PokeList';
 import PokeFeatures from './components/PokeFeatures';
 
 function App() {
-  const [pokeInput, setPokeInput] = useState("")
-  const [submittedPokemon, setSubmittedPokemon] = useState({})
-  const [isSubmittedPokeEmpty, setIsSubmittedPokeEmpty] = useState(true)
-  const [pokeList, setPokeList] = useState([])
-  const [offset, setOffset] = useState(0)
 
-  const [pokemonObject, setPokemonObject] = useState([])
+  const [pokeInput, setPokeInput] = useState("") /* Estado del valor del input */
+  const [submittedPokemon, setSubmittedPokemon] = useState({}) /* Estado del objeto de pokemon buscado */
+  const [isSubmittedPokeEmpty, setIsSubmittedPokeEmpty] = useState(true) /* Estado del valor true o false para saber si se buscó o no un pokemon */
+  const [pokeList, setPokeList] = useState([]) /* Estado del array del listado de los pokemons */
+  const [offset, setOffset] = useState(0) /* Estado del valor del offset para la paginacion de los pokemons */
 
+  const [pokemonObject, setPokemonObject] = useState([]) /* Estado del array con los objetos con las características de cada pokemon */
+
+  /* Estados del modal */
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  /* Obtención del valor de búsqueda */
   const handleChange = (e) => {
     const { value } = e.target
     setPokeInput(value.toLowerCase())
@@ -37,14 +41,14 @@ function App() {
   }
 
   useEffect(() => {
-    const nextPage = async () => {
+    const allPokemon = async () => {
       if (!pokeInput) {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`)
         setIsSubmittedPokeEmpty(true)
         setPokeList(response.data.results)
       }
     }
-    nextPage()
+    allPokemon()
   }, [offset, pokeInput])
 
   useEffect(() => {

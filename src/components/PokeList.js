@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import PokemonThumbnail from './PokemonThumbnail';
+import pokeball from "../assets/pokebola.png"
 
 export default function PokeList({ setOffset, offset, pokemonObject }) {
 
@@ -19,6 +20,7 @@ export default function PokeList({ setOffset, offset, pokemonObject }) {
                             type={pokemon.types[0].type.name[0].toUpperCase() + pokemon.types[0].type.name.slice(1)}
                             id={pokemon.id}
                             image={`${pokemon.sprites?.other["official-artwork"]["front_default"]}`}
+                            pokeball={pokeball}
                         />
                     ))
                 }
